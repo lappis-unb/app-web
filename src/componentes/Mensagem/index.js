@@ -111,7 +111,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
       <form className="formulario" onSubmit={aoSubmeter}>
         <h2>Mensagens - {mensagensTotal}</h2>
 
-        <InputGroup className="mb-3"  >
+        {/* <InputGroup className="mb-3"  > */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Template da Mensagem</b> </InputGroup.Text>
           <Form.Control
             label='Mensagem - Template'
@@ -123,6 +123,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
           //required
           //onChange={this.props.handleChange}
           />
+          {/* <br/> */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Assunto</b> </InputGroup.Text>
           <Form.Control
             label='Assunto'
@@ -134,6 +135,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
           //required
           //onChange={this.props.handleChange}
           />
+          {/* <br/> */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Tipo</b> </InputGroup.Text>
           <Form.Control
             label='Tipo'
@@ -145,6 +147,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
           //required
           //onChange={this.props.handleChange}
           />
+          {/* <br/> */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Texto</b> </InputGroup.Text>
           <Form.Control
             label='Texto'
@@ -156,7 +159,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
           //required
           //onChange={this.props.handleChange}
           />
-        </InputGroup>
+        {/* </InputGroup> */}
 
 
         <Card style={{ width: '100%', backgroundColor: '#d5d8d7' }}>
@@ -173,7 +176,7 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
 
         <br />
 
-        <InputGroup className="mb-3"  >
+        {/* <InputGroup className="mb-3"  > */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Propostas - Depois de ...</b> </InputGroup.Text>
           <Form.Control
             type="number"
@@ -194,12 +197,12 @@ const Mensagem = ({ aoCadastrar, times, cadastrarTime, mensagensTotal, tipos }) 
           //onChange={this.props.handleChange}
           />
 
-          <Button variant="primary" style={{ width: '15%' }}
+          <Button variant="primary" 
             onClick={() => IntervaloMensagens(de, ate)}
           >Consultar</Button>
           {/* <Button variant="danger" style={{ width: '15%'}} 
                     >Enviar Mensagens</Button>                                      */}
-        </InputGroup>
+        {/* </InputGroup> */}
 
       </form>
 
