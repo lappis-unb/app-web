@@ -75,6 +75,7 @@ const Busca = ({aoCadastrar}) => {
         //resultado.map(item => { words_R = item + " " + words_R})
         //resultado = resultado.ToString;
         console.log('resultado=', resultado, '.',words_R,'.');        
+        if (words_R.length < 1) {words_R = 'x'}
 
         await axios.get(`${URL_API_LOCAL}/propostas/busca/${words_R}/${evento}`)
         //await axios.get(`${URL_API_LOCAL}/propostas/busca/${resultado}/${evento}`)
@@ -137,7 +138,7 @@ const Busca = ({aoCadastrar}) => {
         <section className="formulario-container">
             <form className="formulario">
                 <h2>Busca Propostas</h2>
-                <InputGroup className="mb-3"  >
+                {/* <InputGroup className="mb-3"  > */}
                 <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Palavras</b> </InputGroup.Text>
                 <Form.Control
                     label='Palavras'
@@ -149,22 +150,22 @@ const Busca = ({aoCadastrar}) => {
                                 //required
                                 //={this.props.handleChange}
                 />      
-                <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Categoria</b> </InputGroup.Text>
+                {/* <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Categoria</b> </InputGroup.Text>
                     <Form.Select aria-label="Default select example" onChange={evento => setCategoria(evento.target.value)}>
                         <option>Escolha a categoria</option>
                         {categorias.map(item => <option value={item.id}>{item.nome}</option>)}
-                    </Form.Select>
+                    </Form.Select> */}
                 <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Evento</b> </InputGroup.Text>
                     <Form.Select aria-label="Default select example" onChange={evento => setEvento(evento.target.value)}>
                         <option>Escolha o Evento</option>
                         <option value="2">PPA Participativo</option>
                         <option value="3">4a Conferência da Juventude</option>
                     </Form.Select>
-                <Button variant="primary" style={{ width: '15%'}} 
+                <Button variant="primary" 
                     onClick={() => buscaDados(id,evento)}
                 >Consultar</Button>      
 
-                </InputGroup>
+                {/* </InputGroup> */}
 
                 <br/>
             </form>

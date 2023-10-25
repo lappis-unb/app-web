@@ -204,7 +204,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
       <form className="formulario" onSubmit={aoSubmeter}>
         <h2>{total} - Propostas</h2>
 
-        <InputGroup className="mb-3"  >
+        {/* <InputGroup className="mb-3"  > */}
 
           <Form.Select aria-label="Default select example" onChange={evento => setCategoria(evento.target.value)}>
             <option>Escolha a categoria</option>
@@ -213,17 +213,17 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
 
           </Form.Select>
 
-          <Button variant="primary" style={{ width: '15%' }}
+          <Button variant="primary" 
             onClick={() => {
               if (categoria.length > 0) { CategoriaPropostas(categoria) } else { IntervaloPropostas(de, ate) }
             }}
           >Consultar</Button>
-          <Button variant="outline-success" style={{ width: '15%' }}
+          <Button variant="outline-success" 
           >{propostas.length} Propostas</Button>
-        </InputGroup>
+        {/* </InputGroup> */}
 
 
-        <InputGroup className="mb-3"  >
+        {/* <InputGroup className="mb-3"  > */}
           <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>ID - Proposta</b> </InputGroup.Text>
           <Form.Control
             label='Proposta - ID'
@@ -238,9 +238,9 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
             defaultValue={title}
             onChange={evento => setTitle(evento.target.value)}
           />
-        </InputGroup>
+        {/* </InputGroup> */}
 
-        <Card style={{ width: '100%', backgroundColor: '#E0FFFF' }}>  
+        <Card style={{ backgroundColor: '#E0FFFF' }}>  
           <Card.Body>
             <Card.Title>   {propostaSelecionada.title} ( {propostaSelecionada.published_at} ) ___ {propostaSelecionada.supports} votos</Card.Title>
             <Card.Text>
@@ -251,7 +251,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
                     <a href="">{propostaSelecionada.url}</a>              
             </Card.Text>
 
-            <Button variant="outline-success" style={{ width: '10%' }} 
+            <Button variant="outline-success" 
               onClick={() => buscaComentarios(propostaSelecionada.id)}
              > Comments</Button>
             

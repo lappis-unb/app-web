@@ -25,7 +25,7 @@ function Graficos() {
     <Modal show={show} onHide={handleClose} className='modal-lg'>
         <Modal.Header closeButton>
           <Modal.Title>
-             <p style={{ color: "#03a9f4" }} >Visitas mensais - em 04/10/2023</p> 
+             <p style={{ color: "#03a9f4" }} >Visitas mensais - em 23/10/2023</p> 
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

@@ -27,8 +27,9 @@ export const ChartJsApi1 = ({numeros, tipo_grafico}) => {
 
     var labelGeral = 'Visitantes';
     var labelsDados = ["2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10"];
-    var dadosPopulacao = [487935, 1634010, 4730815, 174709, 102234, 12689]; 
-    var dadosVotantes = [312569, 1047701, 2833304, 105886, 65051, 9976];  
+    var dadosPopulacao = [487935, 1634010, 4730815, 174709, 102234, 87495]; 
+    var dadosVotantes = [312569, 1047701, 2833304, 105886, 65051, 56178];  
+    
 
 
     // if (numeros === 1) {

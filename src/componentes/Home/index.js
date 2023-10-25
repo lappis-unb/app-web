@@ -125,23 +125,60 @@ function Home() {
         {/* <h3>Propostas : {totalPropostas} </h3> (site - download .csv)  */}
 
         <Container>
+
           <Row>
-            <Col>
-              <a href="./Busca">
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src='/imagens/propostas.PNG' />
+          {/* <Col> */}
+                <Card style={{ width: '36rem' }}>
+                <a href="./Propostas">
+                  <Card.Img variant="top" src='/imagens/propostas1.PNG' /> 
+                  </a>
                   <Card.Body >
-                    <Card.Title style={{color: "blue"}}>{totalPropostas}  Propostas</Card.Title>
-                    <Card.Text >
+                    <Card.Title style={{color: "blue"}}>Propostas</Card.Title>                    
+                    {/* <Card.Title style={{color: "blue"}}>{total.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) }</Card.Title>
+                    <Card.Text>
+                      Participantes efetivos no evento PPA - Brasil Participativo maio a julho 2023.
+                    </Card.Text> */}
+                  </Card.Body>
+                </Card>
+          {/* </Col> */}
+          </Row>
+
+            <Row style={{paddingTop: "20px"}}>
+            {/* <Col> */}
+              {/* <a href="./Propostas"> */}
+                <Card style={{ width: '36rem' }}>
+                <a href="./Busca">
+                  <Card.Img variant="top" src='/imagens/propostasSearch1.PNG' />
+                  </a>
+                  <Card.Body >
+                    <Card.Title >Motor de Busca</Card.Title>
+
+                    {/* <a href="./Propostas">
+                  <Card.Img variant="top" src='/imagens/propostas.PNG' />
+                  </a>               */}
+
+                  <br/>
+
+                    {/* <a href="./Busca">
+                  <Card.Img variant="top" src='/imagens/propostasSearch.PNG' />
+                  </a>                        */}
+                    {/* <Card.Text >
                       Explore os registros de todas as propostas dos eventos participativos.
                     </Card.Text>
-                    {/* <Button variant="primary">Pesquisa</Button>
+                    <Button variant="primary">Pesquisa</Button>
                     <Button variant="success">Cadastro</Button> */}
                   </Card.Body>
                 </Card>
-              </a>
-            </Col>
-            <Col>
+              {/* </a> */}
+            {/* </Col> */}
+            </Row>
+            <br/>
+
+
+
+
+          <Row>
+            {/* <Col>
               <a href="./Participantes">
                 <Card style={{ width: '18rem' }}>
                   <Card.Img variant="top" src='/imagens/notifica_o1.PNG' /> 
@@ -150,22 +187,23 @@ function Home() {
                     <Card.Text>
                       Participantes efetivos no evento PPA - Brasil Participativo maio a julho 2023.
                     </Card.Text>
-                    {/* <Button variant="primary">Cadastro</Button>
-                    <Button variant="success">Mensagens</Button> */}
                   </Card.Body>
                 </Card>
               </a>
-          </Col>
+          </Col> */}
+          </Row>
 
-          <Col>
-            <a href="./Numeros">
-              <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src='/imagens/graficos.PNG' />
+          {/* <Col> */}
+          <Row>
+              <Card style={{ width: '36rem' }}>
+              <a href="./Numeros">                
+                <Card.Img variant="top" src='/imagens/graficos2.PNG' />
+                </a>
                 <Card.Body>
-                  <Card.Title style={{color: "blue"}}>PPA Participativo</Card.Title>
-                  <Card.Text>
-                    Consulte os {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } registros de análises das 20 propostas mais votadas por ministério.
-                  </Card.Text>
+                  <Card.Title >PPA Participativo</Card.Title>
+                  {/* <Card.Text>
+                    Consulte os || {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } registros de análises das 20 propostas mais votadas por ministério.
+                  </Card.Text> */}
 
                   {/* <a href="./Busca">
                     <Button variant="primary" >Relatórios</Button>    
@@ -174,10 +212,10 @@ function Home() {
 
                 </Card.Body>
               </Card>
-            </a>
-          </Col>
+            </Row>              
 
-          </Row>          
+          {/* </Col> */}
+
         </Container>  
 
 

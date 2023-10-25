@@ -165,7 +165,7 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
       <form className="formulario" > 
         <h2>{numerosTotal.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } - Registros de Análises </h2>
 
-        <InputGroup className="mb-3"  >
+        {/* <InputGroup className="mb-3"  > */}
         <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Categoria</b> </InputGroup.Text>
           {/* <Form.Control
             label='Categoria'
@@ -261,7 +261,7 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
             defaultValue={proposta}
             onChange={evento => setProposta(evento.target.value)}
           />
-        </InputGroup>
+        {/* </InputGroup> */}
 
         {/* <Card style={{ width: '100%', backgroundColor: '#d5d8d7' }}>
           <Card.Body>
@@ -290,17 +290,17 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
             onChange={evento => setAte(evento.target.value)}
           /> */}
 
-          <Button variant="primary" style={{ width: '15%' }}
+          <Button variant="primary" 
             onClick={() => buscaDados(tipo, regiao, ranking, proposta, categoria)}
           >Consultar</Button>
 
-          <Button variant="outline-success" style={{ width: '40%' }}
+          {/* <Button variant="outline-success" style={{ width: '40%' }}
 
-          >   </Button>
+          >   </Button> */}
 
           <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic" style={{ width: '15%' }}>
-                  Gráfico: {nomeGrafico[tipoGrafico]}
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                  {nomeGrafico[tipoGrafico]}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
@@ -313,16 +313,16 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
               </Dropdown>
 
 
-          <Button variant="outline-success" style={{ width: '10%' }} onClick={handleShow}> 
+          <Button variant="outline-success"  onClick={handleShow}> 
             Genero
           </Button>    
 
-          <Button variant="outline-success" style={{ width: '10%' }} 
+          <Button variant="outline-success"  
             onClick={handleShow1}> 
             Detalhe
           </Button>                              
 
-          <Button variant="outline-success" style={{ width: '10%' }} 
+          <Button variant="outline-success"  
             onClick={handleShow2}> 
             Ranking
           </Button>     
