@@ -6,6 +6,8 @@ import Mensagem from "../src/pages/Mensagem";
 import Numero from "../src/pages/Numero";
 import Proposta from "../src/pages/Proposta";
 import PropostaComentario from "./componentes/PropostaComentario";
+import PropostaModeracao from "./componentes/PropostaModeracao";
+import Moderacao from "./componentes/Moderacao";
 import ComentariosShow from "./componentes/PropostaComentario/ComentariosShow";
 import Participante from "../src/pages/Participante";
 import Tema from "../src/pages/Tema";
@@ -29,6 +31,8 @@ function AppRoutes() {
                 <Route path="/Propostas" element={<Proposta />}></Route>
                 <Route path="/PropostaComentarios" element={<PropostaComentario />}></Route>
                 <Route path="/ComentariosShow" element={<ComentariosShow />}></Route>
+                <Route path="/PropostaModeracao" element={<PropostaModeracao />}></Route>
+                <Route path="/Moderacao" element={<Moderacao />}></Route>
                 <Route path="/Temas" element={<Tema />}></Route>                
                 <Route path="/Enviar" element={<Enviar />}></Route>                
 
