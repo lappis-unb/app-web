@@ -44,7 +44,9 @@ function Cabecalho() {
                                 <Nav.Link href="./Reunioes">Reuniões</Nav.Link>
                                 <Nav.Link href="./Propostas">Propostas</Nav.Link>
                                 <Nav.Link href="./PropostaComentarios"> - Comentários</Nav.Link>
-                                <Nav.Link href="./Busca"> - Busca</Nav.Link>
+                                <Nav.Link href="./PropostaModeracao"> - Moderação</Nav.Link>
+                                <Nav.Link href="./Busca"> - Busca</Nav.Link>     
+                                <Nav.Link href="./Moderacao"> - Moderacao</Nav.Link>     
                             </NavDropdown>
 
                             <NavDropdown title="Outros" id="collasible-nav-dropdown">
