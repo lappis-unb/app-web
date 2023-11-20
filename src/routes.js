@@ -18,6 +18,11 @@ import Graficos from "./componentes/Graficos";
 import GraficoDia from "./componentes/GraficoDia";
 import Reuniao from './componentes/Reuniao';
 import Busca from './componentes/Busca';
+import Login from './componentes/login';
+import Matomo from './componentes/Matomo';
+import MatomoDias from './componentes/MatomoDias';
+import MatomoSoma from './componentes/MatomoSoma';
+
 
 function AppRoutes() {
     return(
@@ -44,6 +49,11 @@ function AppRoutes() {
 
                 <Route path="/Reunioes" element={<Reuniao />}></Route>
                 <Route path="/Busca" element={<Busca />}></Route>
+                <Route path="/Login" element={<Login />}></Route>
+
+                <Route path="/Matomo" element={<Matomo />}></Route>
+                <Route path="/MatomoDias" element={<MatomoDias />}></Route>
+                <Route path="/MatomoSoma" element={<MatomoSoma />}></Route>
 
            </Routes>
            <Rodape />

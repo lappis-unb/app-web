@@ -139,9 +139,9 @@ const Busca = ({aoCadastrar}) => {
             <form className="formulario">
                 <h2>Busca Propostas</h2>
                 {/* <InputGroup className="mb-3"  > */}
-                <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Palavras</b> </InputGroup.Text>
+                <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Palavra(s)-chave</b> </InputGroup.Text>
                 <Form.Control
-                    label='Palavras'
+                    label='Palavra(s)-chave'
                     type="text"
                     placeholder='Digite palavras para busca no conteúdo das propostas'
                                 //defaultValue={de} //this.props.inputValues.firstName}

@@ -114,9 +114,9 @@ function Home() {
 
         {/* <Bodyimg /> */}
 
+        {/* <br/>
         <br/>
-        <br/>
-        <br/>
+        <br/> */}
         <br/>
         {/* <h3>Participantes :  {total.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } </h3> 
             (Dataprev .csv) */}
@@ -127,7 +127,7 @@ function Home() {
         <Container>
 
           <Row>
-          {/* <Col> */}
+          <Col>
                 <Card style={{ width: '36rem' }}>
                 <a href="./Propostas">
                   <Card.Img variant="top" src='/imagens/propostas1.PNG' /> 
@@ -140,11 +140,11 @@ function Home() {
                     </Card.Text> */}
                   </Card.Body>
                 </Card>
-          {/* </Col> */}
-          </Row>
+          </Col>
+          {/* </Row>
 
-            <Row style={{paddingTop: "20px"}}>
-            {/* <Col> */}
+            <Row style={{paddingTop: "20px"}}> */}
+            <Col>
               {/* <a href="./Propostas"> */}
                 <Card style={{ width: '36rem' }}>
                 <a href="./Busca">
@@ -157,7 +157,7 @@ function Home() {
                   <Card.Img variant="top" src='/imagens/propostas.PNG' />
                   </a>               */}
 
-                  <br/>
+                  {/* <br/> */}
 
                     {/* <a href="./Busca">
                   <Card.Img variant="top" src='/imagens/propostasSearch.PNG' />
@@ -170,15 +170,12 @@ function Home() {
                   </Card.Body>
                 </Card>
               {/* </a> */}
-            {/* </Col> */}
+            </Col>
             </Row>
             <br/>
 
-
-
-
-          <Row>
-            {/* <Col>
+          {/* <Row>
+            <Col>
               <a href="./Participantes">
                 <Card style={{ width: '18rem' }}>
                   <Card.Img variant="top" src='/imagens/notifica_o1.PNG' /> 
@@ -190,11 +187,12 @@ function Home() {
                   </Card.Body>
                 </Card>
               </a>
-          </Col> */}
-          </Row>
+          </Col>
+          </Row> */}
 
           {/* <Col> */}
           <Row>
+            <Col>
               <Card style={{ width: '36rem' }}>
               <a href="./Numeros">                
                 <Card.Img variant="top" src='/imagens/graficos2.PNG' />
@@ -212,7 +210,59 @@ function Home() {
 
                 </Card.Body>
               </Card>
-            </Row>              
+            </Col>
+          {/* </Row>              
+
+
+            <Row> */}
+            <Col>
+              <Card style={{ width: '36rem' }}>
+              <a href="./Matomo">                
+                <Card.Img variant="top" src='/imagens/analytics.png' />
+                </a>
+                <Card.Body>
+                  <Card.Title >Analytics Matomo</Card.Title>
+                  {/* <Card.Text>
+                    Consulte os || {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } registros de análises das 20 propostas mais votadas por ministério.
+                  </Card.Text> */}
+
+                  {/* <a href="./Busca">
+                    <Button variant="primary" >Relatórios</Button>    
+                  </a>  */}
+                  {/* <Button variant="success">Mensagens</Button> */}
+
+                </Card.Body>
+              </Card>
+              </Col>
+            </Row>                    
+
+            <br/>
+
+            <Row>
+              <Col>
+              <Card style={{ width: '36rem' }}>
+              <a href="./PropostaModeracao">                
+                <Card.Img variant="top" src='/imagens/moderacao.png' />
+                </a>
+                <Card.Body>
+                  <Card.Title >Termos de Moderação</Card.Title>
+                  {/* <Card.Text>
+                    Consulte os || {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } registros de análises das 20 propostas mais votadas por ministério.
+                  </Card.Text> */}
+
+                  {/* <a href="./Busca">
+                    <Button variant="primary" >Relatórios</Button>    
+                  </a>  */}
+                  {/* <Button variant="success">Mensagens</Button> */}
+
+                </Card.Body>
+              </Card>
+              </Col>
+            </Row>          
+
+
+
+
 
           {/* </Col> */}
 
@@ -221,11 +271,11 @@ function Home() {
 
 
         {/* <h3>Registros de Análises : {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } </h3> (.html, .xlsx) <br/> */}
+        {/* <br/>
         <br/>
+        <br/> */}
         <br/>
-        <br/>
-        <br/>
-        <br/>
+        <br/> 
         <br/>
 
       </section>

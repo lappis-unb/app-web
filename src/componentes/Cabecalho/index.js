@@ -36,6 +36,9 @@ function Cabecalho() {
                                 {/* <NavDropdown.Item href="./Numeros">Análise</NavDropdown.Item> */}
                                 <NavDropdown.Item href="./Graficos">Visitantes Mensal</NavDropdown.Item>
                                 <NavDropdown.Item href="./GraficoDia">Visitantes - Dia</NavDropdown.Item>
+                                <NavDropdown.Item href="./Matomo">Matomo</NavDropdown.Item>
+                                <NavDropdown.Item href="./MatomoSoma">Matomo - Soma</NavDropdown.Item>                                
+                                <NavDropdown.Item href="./MatomoDias">Matomo - Dias</NavDropdown.Item>
                             </NavDropdown>                        
 
                             <NavDropdown title="Itens" id="collasible-nav-dropdown">
@@ -46,7 +49,7 @@ function Cabecalho() {
                                 <Nav.Link href="./PropostaComentarios"> - Comentários</Nav.Link>
                                 <Nav.Link href="./PropostaModeracao"> - Moderação</Nav.Link>
                                 <Nav.Link href="./Busca"> - Busca</Nav.Link>     
-                                <Nav.Link href="./Moderacao"> - Moderacao</Nav.Link>     
+                                <Nav.Link href="./Login"> - Login</Nav.Link>      
                             </NavDropdown>
 
                             <NavDropdown title="Outros" id="collasible-nav-dropdown">

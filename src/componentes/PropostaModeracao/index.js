@@ -20,9 +20,15 @@ const PropostaModeracao = ({aoCadastrar}) => {
     // const [texto, setTexto] = useState('')
     // const [tipo, setTipo] = useState('')   
 
+    var qtdePropostas = 0;
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);   
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);       
 
     const [total, setTotal] = useState(0)    
 
@@ -54,6 +60,22 @@ const PropostaModeracao = ({aoCadastrar}) => {
           console.log(error);
         })
 
+      TodasModeracoes();
+      // axios.get(`${URL_API_LOCAL}/moderacoes`)
+      // .then(todosModeracao => {
+      //   if (todosModeracao.data[0] !== undefined) {
+      //     setModeradores(todosModeracao.data)
+      //   } else {
+      //     //setTemplate('');
+      //   }       
+      // })
+      // .catch (error => {
+      //   console.log(error);
+      // })
+    }, 0)
+
+    const TodasModeracoes = () => {    
+      console.log('TodasModeracoes')
       axios.get(`${URL_API_LOCAL}/moderacoes`)
       .then(todosModeracao => {
         if (todosModeracao.data[0] !== undefined) {
@@ -65,7 +87,7 @@ const PropostaModeracao = ({aoCadastrar}) => {
       .catch (error => {
         console.log(error);
       })
-    }, 0)
+    }
 
     const IntervaloTemas = (de, ate) => {    
       axios.get(`${URL_API_LOCAL}/moderacoes/deate/${de}/${ate}`)
@@ -92,7 +114,7 @@ const PropostaModeracao = ({aoCadastrar}) => {
             setBody(resposta.data[0].body);
 
             setModeracaoSelecionada(resposta.data[0]);
-            setShow(true) 
+            setShow(true); 
 
             let words = resposta.data[0].body;
             buscaPropostas(words,1);
@@ -107,6 +129,21 @@ const PropostaModeracao = ({aoCadastrar}) => {
         })    
     }    
 
+    const atualizaDados = async (quantidade) => {
+        if (moderacaoSelecionada) {
+          moderacaoSelecionada.propostas_total = quantidade;
+          await axios.post(`${URL_API_LOCAL}/moderacoes/atualiza`, moderacaoSelecionada)
+            .then(response => {console.log(' moderacao atualizada! ', response)} 
+            ) 
+            .catch(error => { 
+              console.log(error); 
+            }) 
+
+          TodasModeracoes();
+
+        }
+    } 
+
     const buscaTermo = async (ide) => {
       console.log('buscaTermo', ide)
       await axios.get(`${URL_API_LOCAL}/moderacoes/id/${ide}`)
@@ -116,6 +153,8 @@ const PropostaModeracao = ({aoCadastrar}) => {
           console.log(resposta.data[0])
 
           setModeracaoSelecionada(resposta.data[0]);
+
+    //      setShow1(true); 
 
           setId(resposta.data[0].id);
           
@@ -132,29 +171,17 @@ const PropostaModeracao = ({aoCadastrar}) => {
   }    
 
     const buscaPropostas = async (words, evento) => {
-
       let resultado = wordsFill(words);
-      console.log('resultado=wordsFill', resultado);
-
       let words_R = resultado.toString();
       words_R = words_R.replaceAll(',', ' ')
       words_R = words_R.replaceAll('/','-');        
-
-      console.log('resultado=', resultado, '.',words_R,'.');        
       if (words_R.length < 1) {words_R = 'x'}
-
       await axios.get(`${URL_API_LOCAL}/propostas/busca/${words_R}/${evento}`)
       .then(resposta => {
-        console.log('id:', id, ' ',resposta.data)
         if (resposta.data[0] !== undefined) {
-          console.log(resposta.data)
-          // propostasOrdenadas = resposta.data; 
-          // OrdenarPropostas(0)
-          // setPropostas(propostasOrdenadas);
           setPropostas(resposta.data);
         } else {
           setPropostas([]);
-          // propostasOrdenadas= []; 
         }       
       })
       .catch (error => {
@@ -162,51 +189,50 @@ const PropostaModeracao = ({aoCadastrar}) => {
       })    
   }   
 
-    const aoSubmeter = (evento) => {
-        evento.preventDefault()
-        console.log('form enviado', id, body )
-        aoCadastrar({
-            id,
-            body
-        })
-    }
-
-    const GravarModeracao = (id, body, evento, estado) => {
+    const GravarModeracao = async (id, body, evento, estado) => {
       const data = {
         id: id,
         body: body,
         evento: evento,
         estado: estado,
       };
-      axios.post(`${URL_API_LOCAL}/moderacoes/create`, data)
+      await axios.post(`${URL_API_LOCAL}/moderacoes/create`, data)
         .then(response => console.log(' moderacao ', response)
         )
         .catch(error => {
           console.log(error);
         })
+
+      TodasModeracoes();
+
     }
-
-
-
 
     return (
         <section className="formulario-container">
-            <form className="formulario" onSubmit={aoSubmeter}>
-                <h2>{total} - Propostas - Moderadores</h2>
+            <form className="formulario">
+                <h2>{total} - Termos Moderadores</h2>
 
-                <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>ID da Moderação</b> </InputGroup.Text>
+                {/* <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>ID da Moderação</b> </InputGroup.Text>
           <Form.Control
             label='ID'
             //type="number"
             placeholder='Informe o ID do termo'
             defaultValue={id}
             onChange={evento => setId(evento.target.value)}
-          />
-          <Button variant="primary" 
+          /> */}
+          {/* <Button variant="primary" 
             onClick={() => buscaTermo(id)}
-          >Consultar</Button>
+          >Consultar</Button> */}
 
-          <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Palavras</b> </InputGroup.Text>
+
+                  <td>
+                    <Button variant="outline-primary" 
+                      onClick={() => setShow1(true)}
+//                      onClick={() => buscaTermo(0)}
+                    >Novo</Button> 
+                  </td>          
+
+          {/* <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Palavras</b> </InputGroup.Text>
           <Form.Control
             label='Termo(s)'
             type="text"
@@ -227,97 +253,25 @@ const PropostaModeracao = ({aoCadastrar}) => {
             <option>Escolha o estado do termo</option>
             <option value="Ativo">Ativo</option>
             <option value="Inativo">Inativo</option>
-          </Form.Select>
+          </Form.Select> */}
 
-          <Button variant="outline-success" 
+          {/* <Button variant="outline-success" 
             onClick={() => GravarModeracao(id, body, evento, estado)}
           >Gravar</Button>
+
           <Button variant="success" 
             onClick={() => buscaDados(id)}
           >Consulta Propostas</Button>
+
+          <Button variant="outline-danger" 
+            onClick={() => atualizaDados(moderadores)}
+          >Atualiza</Button>                        */}
 
           {/* <Button variant="danger" style={{ width: '15%'}} 
                     >Enviar Mensagens</Button>                                      */}
         {/* </InputGroup> */}
 
 
-
-
-
-
-
-
-
-
-                {/* <CampoTexto 
-                    label='Tema - ID' 
-                    placeholder='Informe o ID do tema'
-                    //valor={template}
-                    aoAlterado={valor => { setId(valor); buscaDados(valor) } } />                    
-                <CampoTextoArea
-                    // obrigatorio={true}
-                    label='Nome'
-                    placeholder='Digite o nome '
-                    valor={nome}
-                    aoAlterado={valor => setNome(valor)}/> 
-                <Botao texto='Tema' /> */}
-
-                {/* <InputGroup className="mb-3"  >
-                <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>ID - Moderador</b> </InputGroup.Text>
-                <Form.Control
-                    label='Moderador - ID'
-                    type="number"
-                    placeholder='Informe o ID do Moderador'
-                                //defaultValue={de} //this.props.inputValues.firstName}
-                    // defaultValue={de}
-                    onChange={evento => { setId(evento.target.value) }}
-                                //required
-                                //onChange={this.props.handleChange}
-                />      
-                <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Nome</b> </InputGroup.Text>
-                <Form.Control
-                    label='Palavras moderadoras'
-                    //type="number"
-                    placeholder='Digite as palavras moderadoras'
-                                //defaultValue={de} //this.props.inputValues.firstName}
-                    defaultValue={nome}
-                    onChange={evento => setNome(evento.target.value)}
-                                //required
-                                //onChange={this.props.handleChange}
-                />          
-              </InputGroup>
-
-                <br/>
-
-                <InputGroup className="mb-3"  >
-                    <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Moderadores - Depois de ...</b> </InputGroup.Text>
-                    <Form.Control
-                                type="number"
-                                //defaultValue={de} //this.props.inputValues.firstName}
-                                defaultValue={de}
-                                onChange={evento => setDe(evento.target.value)}
-                                //required
-                                //onChange={this.props.handleChange}
-                                />
-
-                    <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Quantos ...</b> </InputGroup.Text>            
-                    <Form.Control
-                                type="number"
-                                //defaultValue={de} //this.props.inputValues.firstName}
-                                defaultValue={ate}
-                                onChange={evento => setAte(evento.target.value)}
-                                //required
-                                //onChange={this.props.handleChange}
-                                />
-
-                    <Button variant="primary" style={{ width: '15%'}} 
-                       onClick={() => IntervaloTemas(de, ate)}
-                    >Consultar</Button>      
-                    <Button variant="success" style={{ width: '15%'}} 
-                       onClick={() => { console.log('Moderacao OK -> '); 
-                                        <Moderacao show={show} moderacao={{ id: 4, body: "palavra"}} />} }
-                    >Termos Moderadores</Button>                                      
-                </InputGroup>   */}
 
             </form>
             <Table striped bordered hover>
@@ -335,7 +289,8 @@ const PropostaModeracao = ({aoCadastrar}) => {
               </thead>
               <tbody>
                {moderadores.map(( moderador ) => (
-                <tr key={moderador.id} onClick={() => buscaTermo(moderador.id)}>
+                <tr key={moderador.id}>
+                   {/* onClick={() => buscaTermo(moderador.id)}> */}
 
 {/* onClick={() => buscaDados(moderador.id)}> */}
 
@@ -347,6 +302,29 @@ const PropostaModeracao = ({aoCadastrar}) => {
                   <td>{moderador.propostas_verificadas}</td> 
                   <td>{moderador.propostas_pendentes}</td> 
                   <td>{moderador.created_at}</td> 
+
+                  {/* <td>
+                  <Button variant="outline-primary" 
+                    onClick={() => buscaTermo(id)}
+                  >Novo</Button> 
+                  </td>
+                  <td>
+                  <Button variant="outline-success" 
+                    onClick={() => GravarModeracao(id, body, evento, estado)}
+                  >Gravar</Button>
+                  </td> */}
+                  <td>
+                  <Button variant="success" 
+                    onClick={() => buscaDados(moderador.id)}
+                  >Consulta</Button>
+                  </td>
+                  {/* <td>
+                  <Button variant="outline-danger" 
+                    onClick={() => atualizaDados(moderador)}
+                  >Atualiza</Button>     
+                  </td> */}
+
+
                 </tr>
                ))}
               </tbody>
@@ -374,9 +352,12 @@ const PropostaModeracao = ({aoCadastrar}) => {
                                 //         setPropostaSelecionada(proposta)
                                 //     }
                                 // }}
-
                                 >  </Button> 
-                                <Button variant="outline-danger" data-toggle="tooltip" data-placement="top" title="Moderação"></Button> 
+                                <Button variant="outline-danger" data-toggle="tooltip" data-placement="top" title="Moderação"
+                                  // onClick={() => {atualizaDados(propostas.length)
+                                  //     }}
+                                  >
+                                </Button> 
                             </div>                        
                             </li>
                         ))}
@@ -384,14 +365,82 @@ const PropostaModeracao = ({aoCadastrar}) => {
                     </div>                
                 </Modal.Body>
                 <Modal.Footer>
-                {/* <Button variant="secondary" onClick={handleClose}>
-                    Close
-                </Button> */}
+                <Button variant="outline-success"  onClick={() => {atualizaDados(propostas.length); setShow(false);}}>
+                    Atualiza
+                </Button>
                 <Button variant="primary" onClick={handleClose}>
                     OK
                 </Button>
                 </Modal.Footer>
             </Modal>
+
+
+
+
+
+            <Modal show={show1} onHide={handleClose1} className='modal-xl'>
+                <Modal.Header closeButton>
+                <Modal.Title>{ moderacaoSelecionada.body } </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>ID da Moderação</b> </InputGroup.Text>
+                  <Form.Control
+                    label='ID'
+                    //type="number"
+                    placeholder='Informe o ID do termo'
+                    defaultValue={id}
+                    onChange={evento => setId(evento.target.value)}
+                  />
+                  {/* <Button variant="primary" 
+                    onClick={() => buscaTermo(id)}
+                  >Consultar</Button> */}
+
+                  <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Palavras</b> </InputGroup.Text>
+                  <Form.Control
+                    label='Termo(s)'
+                    type="text"
+                    placeholder='Digite a(s) palavra(s) s serem moderadas'
+                    defaultValue={body}
+                    onChange={evento => setBody(evento.target.value)}
+                  />
+
+                  <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Evento</b> </InputGroup.Text>
+                  <Form.Select aria-label="Default select example" onChange={evento => setEvento(evento.target.value)}>
+                    <option>Escolha o evento em que o termo será moderado</option>
+                    <option value="ppaparticip">PPA Participativo</option>
+                    <option value="confjuv4">4a Conferência Nacional da Juventude</option>
+                  </Form.Select>
+
+                  <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Estado</b> </InputGroup.Text>
+                  <Form.Select aria-label="Default select example" onChange={evento => setEstado(evento.target.value)}>
+                    <option>Escolha o estado do termo</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Inativo">Inativo</option>
+                  </Form.Select>
+
+                </Modal.Body>
+                <Modal.Footer>
+                {/* <Button variant="secondary"  onClick={() => {atualizaDados(propostas.length); TodasModeracoes()}}>
+                    Atualiza
+                </Button> */}
+
+                <Button variant="outline-success" 
+                    onClick={() => { GravarModeracao(id, body, evento, estado);  
+                      setShow1(false); }}
+                  >Gravar</Button>
+
+                <Button variant="primary" onClick={handleClose1}>
+                    OK
+                </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+
+
+
+
+
 
         </section>
     )

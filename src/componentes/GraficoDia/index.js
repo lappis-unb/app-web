@@ -25,7 +25,7 @@ function GraficoDia() {
     <Modal show={show} onHide={handleClose} className='modal-xl'>
         <Modal.Header closeButton>
           <Modal.Title>
-             <p style={{ color: "#03a9f4" }} >Visitas - em 28/10/2023</p> 
+             <p style={{ color: "#03a9f4" }} >Visitas - em 29/10/2023</p> 
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -36,10 +36,10 @@ function GraficoDia() {
                 tipo_grafico = {4}
               /> */}
 
-              <ChartJsApi 
+              {/* <ChartJsApi 
                 numeros = {3}
                 tipo_grafico = {4}
-              />
+              /> */}
 
             </div>
             

@@ -26,12 +26,11 @@ export const ChartJsApi1 = ({numeros, tipo_grafico}) => {
     console.log('ChartJsRenda -> numeros=', numeros)
 
     var labelGeral = 'Visitantes';
-    var labelsDados = ["2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10"];
-    var dadosPopulacao = [487935, 1634010, 4730815, 174709, 102234, 105660]; 
-    var dadosVotantes = [312569, 1047701, 2833304, 105886, 65051, 67859];  
+
+    var labelsDados = ["2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11"];
+    var dadosPopulacao = [487935, 1634010, 4730815, 174709, 102234, 311253, 11695]; 
+    var dadosVotantes = [312569, 1047701, 2833304, 105886, 65051, 221505, 8939];       
     
-
-
     // if (numeros === 1) {
     //     var labelGeral = 'Visitantes';
     //     labelsDados = ["2023-05", "2023-06", "2023-07", "2023-08", "2023-09"];
