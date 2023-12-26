@@ -22,6 +22,8 @@ import Login from './componentes/login';
 import Matomo from './componentes/Matomo';
 import MatomoDias from './componentes/MatomoDias';
 import MatomoSoma from './componentes/MatomoSoma';
+import Atualizacao from './componentes/Atualizacao';
+import Video from './componentes/Video';
 
 
 function AppRoutes() {
@@ -54,6 +56,8 @@ function AppRoutes() {
                 <Route path="/Matomo" element={<Matomo />}></Route>
                 <Route path="/MatomoDias" element={<MatomoDias />}></Route>
                 <Route path="/MatomoSoma" element={<MatomoSoma />}></Route>
+                <Route path="/Atualizacao" element={<Atualizacao />}></Route>
+                <Route path="/Video" element={<Video />}></Route>
 
            </Routes>
            <Rodape />

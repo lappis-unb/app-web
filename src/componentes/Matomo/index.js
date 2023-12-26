@@ -163,7 +163,7 @@ const Matomo = () => {
         //var resumo = [];
 
         setLoading(true);
-        console.log(' >> 1 setLoading=',loading)
+       // console.log(' >> 1 setLoading=',loading)
 
         var resumo = await myFunction(label);
 
@@ -193,7 +193,8 @@ const Matomo = () => {
 
         const data = {
             api: nomeApi,
-            data: dataRequisicao
+            data: dataRequisicao,
+            //limite: 15
         };
 
         console.log('api = ', nomeApi, ' data-nomeApi = ', dataRequisicao, ' resultado= ', resultado, '<-');
@@ -336,7 +337,7 @@ const Matomo = () => {
                     defaultValue={dataGeral}
                     onChange={evento => setDataGeral(evento.target.value)}
                 />
-                                            <Button variant="outline-primary" disabled>
+                                            {/* <Button variant="outline-primary" disabled>
                                               {loading && <Spinner
                                                 as="span"
                                                 animation="border"
@@ -345,7 +346,7 @@ const Matomo = () => {
                                                 aria-hidden="true"
                                                 /> }
                                                 <span className="visually-hidden">Loading...</span>
-                                            </Button>{' '}
+                                            </Button>{' '} */}
 
 
                                             {/* <>
@@ -439,28 +440,28 @@ const Matomo = () => {
                     <Table striped bordered hover variant="info">
                         <thead style={{ backgroundcolor: "#FFF" }}>
                             <tr >
-                                <th>Data</th>
+                                {/* <th>Data</th>
                                 <th>bounce_count</th>
                                 <th>label</th>
-                                {/* <th>logo</th> */}
                                 <th>max_actions</th>
                                 <th>nb_actions</th>
                                 <th>nb_uniq_visitors</th>
                                 <th>nb_users</th>
                                 <th>nb_visits</th>
                                 <th>nb_visits_converted</th>
-                                <th>sum_visit_length</th>
+                                <th>sum_visit_length</th> */}
 
-                                {/* <th>Rejeição</th>
-                                    <th>Rótulo</th>
-                                    <th>logo</th>
-                                    <th>Ações max</th>
-                                    <th>Ações</th>
-                                    <th>Visitantes Únicos</th>
-                                    <th>Usuários</th>
-                                    <th>Visitantes</th>
-                                    <th>Convertidos</th>
-                                    <th>Tamanho</th>                                          */}
+                                <th>Data</th>
+                                <th>Rejeições</th>
+                                <th>Título</th>
+                                {/* <th>logo</th> */}
+                                <th>Máximo Ações</th>
+                                <th>Ações</th>
+                                <th>Visitantes Únicos</th>
+                                <th>Usuários</th>
+                                <th>Visitantes</th>
+                                <th>Conversões</th>
+                                <th>Tempo Gasto</th>
                             </tr>
 
                         </thead>
@@ -621,13 +622,20 @@ const Matomo = () => {
 
 
 
-
-
-
-
-
-
-
+        <Modal show={loading} className='modal-sm'> 
+          <Modal.Body>
+            <Form>
+                                                {loading && <Spinner
+                                                    as="span"
+                                                    animation="border"
+                                                    size="xxl"
+                                                    role="status"
+                                                    aria-hidden="true"
+                                                    /> }
+                                                    <span>   -   Matomo loading...</span>
+            </Form>
+          </Modal.Body>
+        </Modal>
 
 
 

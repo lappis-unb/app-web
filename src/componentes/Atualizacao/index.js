@@ -2,14 +2,14 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 //import ComentarioShow from '../PropostaComentario/ComentariosShow'
 import axios from 'axios'
-import { Card, Table, Button, InputGroup, Form, Modal, Dropdown, Row, Col, Accordion, Image } from 'react-bootstrap'
+import { Card, Table, Button, InputGroup, Form, Modal, Dropdown, Row, Col, Accordion, Image, Container } from 'react-bootstrap'
 
 import { ChartVotos } from "../Proposta/ChartVotos";
 import { ChartDatas } from "../Proposta/ChartDatas";
 
 import { URL_API_LOCAL } from '../../api';
 
-const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) => {
+const Atualizacao = () => {
 
   const [id, setId] = useState('')
   const [category, setCategory] = useState('')
@@ -285,63 +285,110 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
     console.log('Estatisticas Datas OK')
   }   
 
-
-  const aoSubmeter = (evento) => {
-    evento.preventDefault()
-    console.log('form enviado', id, title, body, category)
-    aoCadastrar({
-      id,
-      title,
-      body,
-      category
-    })
-  }
-
   return (
     <>
       <section className="formulario-container">
-        <form className="formulario" onSubmit={aoSubmeter}>
-          <h2>{total} - Propostas  _ 
+        <form className="formulario">
+    <Container>
+    <Row>
+        <Col>
+            <h4> Atualizado em 30/10/2023</h4>
+        {/* </Col>
+        <Col> */}
+            <h4> {totalJuve.propostas + totalPpa.propostas} propostas  </h4>
+        {/* </Col>
+        <Col> */}
+            <h4> {(totalPpa.votos + totalJuve.votos)?.toLocaleString('pt-BR', { style: 'decimal', currency: 'BRL', currencyDisplay: 'name' })} votos  </h4>
+        </Col>
+        <Col>
+        <Button variant="outline-secondary" 
+                    onClick={() => {
+                        setShow3(true)
+                    }}                    
+                >Detalhes</Button>
+        </Col>
+    </Row>
+    </Container>
+
+          {/* <h2>
+          {totalJuve.propostas + totalPpa.propostas} - Propostas _____ 
+            {(totalPpa.votos + totalJuve.votos)?.toLocaleString('pt-BR', { style: 'decimal', currency: 'BRL', currencyDisplay: 'name' })} - Votos    _ 
                 <Button variant="outline-success" 
                     onClick={() => {
                         setShow3(true)
                     }}                    
-                >?</Button></h2>
-<Row>
-  <Col>
-          <Card style={{ backgroundColor: '#E0FFFF' }}>
-            <Card.Body>
-              <Card.Title>
-              </Card.Title>
-              <Card.Text>
-                <Table striped bordered hover variant="info">
-                  <thead >
-                    <tr>
-                      <th>Processo de Participação</th>
-                      <th>Propostas</th>
-                      <th>Votos</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr onClick={() => { setProcesso('ppaparticip'); 
-                                         MontaCategorias('ppaparticip'); 
-                                         estatisticaPropostasDatas('ppaparticip')}}>
-                      <td ><b>PPA Participativo</b></td>
-                      <td><b>{totalPpa.propostas}</b></td>
-                      <td><b>{totalPpa.votos?.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) }</b></td>
-                      {/* <h3>Participantes :  {totalPpa.votos.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } </h3>  */}
-                    </tr>
-                    <tr onClick={() => { setProcesso('confjuv4'); 
-                                         MontaCategorias('confjuv4'); 
-                                         estatisticaPropostasDatas('confjuv4')}}>
-                      <td><b>4a Conferência da Juventude</b></td>
-                      <td><b>{totalJuve.propostas}</b></td>
-                      <td><b>{totalJuve.votos?.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) }</b></td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card.Text>
-              {/* <Button variant="outline-success" 
+                >?</Button></h2> */}
+
+                  <br/>
+                  <br/>
+
+                  <Row>
+                      <Col>
+                          <Card style={{ backgroundColor: '#E0FFFF' }}>
+                              <Card.Body>
+                                  <Card.Title>
+                                  </Card.Title>
+                                  <Card.Text>
+                                      <Table striped bordered hover variant="info">
+                                          <thead >
+                                              <tr>
+                                                  <th>Processo de Participação</th>
+                                                  <th>Download (.csv)</th>
+                                                  <th>API GraphQL *Credenciais App</th>
+                                                  <th>BD PostgreSQL *Credenciais App</th>
+                                                  <th>Atualização</th>
+                                                  <th>Propostas</th>
+                                                  <th>Votos</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr onClick={() => {
+                                                  setProcesso('ppaparticip');
+                                                  MontaCategorias('ppaparticip');
+                                                  estatisticaPropostasDatas('ppaparticip')
+                                              }}>
+                                                  <td><b>PPA Participativo</b>: - 10 Mai a 16 Jul de 2023</td>
+                                                  <td><Button variant="success">Ativa</Button></td>                                                  
+                                                  <td><Button variant="outline-danger">Inativa</Button></td>
+                                                  <td><Button variant="outline-danger">Inativa</Button></td>
+                                                  <td><Button variant="success">Agendada-Manual</Button></td>
+
+                                                  <td><b>{totalPpa.propostas}</b></td>
+                                                  <td><b>{totalPpa.votos?.toLocaleString('pt-BR', { style: 'decimal', currency: 'BRL', currencyDisplay: 'name' })}</b></td>
+                                                  {/* <h3>Participantes :  {totalPpa.votos.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } </h3>  */}
+                                              </tr>
+                                              <tr onClick={() => {
+                                                  setProcesso('confjuv4');
+                                                  MontaCategorias('confjuv4');
+                                                  estatisticaPropostasDatas('confjuv4')
+                                              }}>
+                                                  <td><b>4a Conferência da Juventude</b>: - 30 Ago a 30 Out de 2023</td>
+                                                  <td><Button variant="success">Ativa</Button></td>                                                  
+                                                  <td><Button variant="outline-danger">Inativa</Button></td>
+                                                  <td><Button variant="outline-danger">Inativa</Button></td>
+                                                  <td><Button variant="success">Agendada-Manual</Button></td>                                                  
+
+                                                  <td><b>{totalJuve.propostas}</b></td>
+                                                  <td><b>{totalJuve.votos?.toLocaleString('pt-BR', { style: 'decimal', currency: 'BRL', currencyDisplay: 'name' })}</b></td>
+                                              </tr>
+                                              <tr onClick={() => {
+                                                //   setProcesso('próximo');
+                                                //   MontaCategorias('próximo');
+                                                //   estatisticaPropostasDatas('próximo')
+                                              }}>
+                                                  <td><b>Próximo Processo Participativo</b>: - ... </td>
+                                                  <td><Button variant="secondary" disabled>Inativo</Button></td>                                                  
+                                                  <td><Button variant="secondary" disabled>Inativa</Button></td>
+                                                  <td><Button variant="secondary" disabled>Inativa</Button></td>
+                                                  <td><Button variant="secondary" disabled>Agendada-Manual</Button></td>                                                  
+
+                                                  <td><b>0</b></td>
+                                                  <td><b>0</b></td>
+                                              </tr>                                              
+                                          </tbody>
+                                      </Table>
+                                  </Card.Text>
+                                  {/* <Button variant="outline-success" 
               onClick={() => buscaComentarios(propostaSelecionada.id)}
              > Comments</Button>
            
@@ -349,15 +396,17 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
               {comentariosSoma}
             </Button> */}
 
-            </Card.Body>
-          </Card>
+                              </Card.Body>
+                          </Card>
+                      </Col>
+                      </Row>
 
+        <Row>
 
+            <div class="container">
+                <Row>
 
-
-
-</Col>
-            <Col>
+            {/* <Col>
              <Dropdown >
                 <Dropdown.Toggle variant="success" id="dropdown-basic"  style={{ width: '100%' }}>
                   {nomeGrafico[tipoGrafico]}
@@ -372,10 +421,9 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
                 </Dropdown.Menu>
 
               </Dropdown>
-            {/* </Col>
-              <Col> */}
+              </Col> */}
 
-              <br />
+              <Col>
 
               <Button variant="outline-success" style={{ width: '100%' }} onClick={() => {
                 setNumeros([totalPpa, totalJuve]);
@@ -383,81 +431,27 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
               }}>
                 Gráfico 
               </Button>
+              </Col>
 
+              <Col>
 
-              <br />
-              <br />
-
-              <Button variant="outline-primary"  style={{ width: '100%' }}
+              <Button variant="outline-success"  style={{ width: '100%' }}
                     onClick={() => { estatisticaPropostasDatas(processo);
                       setNumeros(totalDatas);
                       setShow2(true) }}
                 >Propostas por Data - {processo}</Button>{' '}
-
-
-              <br />
-              <br />
-
-              <Button variant="outline-primary" style={{ width: '100%' }}
-                onClick={() => { estatisticaPropostasCategorias(processo) }}
-              >Categorias - {processo}</Button>
-
-
-            </Col>
-
-
-
-        
+                </Col>
 
               <Col>
 
+              <Button variant="outline-success" style={{ width: '100%' }}
+                onClick={() => { estatisticaPropostasCategorias(processo) }}
+              >Categorias - {processo}</Button>
+                </Col>
 
+            </Row>
 
-
-          {/* <InputGroup className="mb-3"  > */}
-          {/* <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>ID - Proposta</b> </InputGroup.Text>
-          <Form.Control
-            label='Proposta - ID'
-            type="number"
-            placeholder='Informe o ID da Proposta'
-            onChange={evento => { setId(evento.target.value)}}
-          />
-          <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Nome</b> </InputGroup.Text>
-          <Form.Control
-            label='Nome'
-            placeholder='Digite o assunto da Proposta'
-            defaultValue={title}
-            onChange={evento => setTitle(evento.target.value)}
-          /> */}
-          {/* </InputGroup> */}
-
-
-          <Card style={{ backgroundColor: '#E0FFFF' }}>
-            <Card.Body>
-              <Card.Title>   {propostaSelecionada.title} ( {propostaSelecionada.published_at} ) ___ {propostaSelecionada.supports} votos</Card.Title>
-              <Card.Text>
-                {propostaSelecionada.body}
-                <br />
-                [ {propostaSelecionada.id} ] :
-                <b>{propostaSelecionada.category_name}</b> -
-                <a href="">{propostaSelecionada.url}</a>
-              </Card.Text>
-
-              <Button variant="outline-success"
-                onClick={() => {buscaComentarios(propostaSelecionada.id);
-                    setShow1(true) 
-                }}                
-              > Comments</Button>
-
-              <Button variant="outline-success">
-                {comentariosSoma}
-              </Button>
-
-            </Card.Body>
-          </Card>
-
-          </Col>
-
+            </div>
           </Row>      
 
           {/* <InputGroup className="mb-3"  > */}
@@ -473,7 +467,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
               <div>
 
                 <br/>
-            <Row>
+            {/* <Row>
               <Col>
                 <Button variant="outline-info"  style={{ width: '100%' }}
                   onClick={() => { estatisticaPropostas() }}
@@ -488,7 +482,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
 
 
               </Col>             
-            </Row>
+            </Row> */}
 
           {/* <Button variant="outline-success"
           >{propostas.length} Propostas</Button> */}
@@ -510,7 +504,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
               <div>
                 <ChartVotos
                   numeros={numeros}
-                  tipo_grafico={tipoGrafico}
+                  tipo_grafico={0}
                 />
               </div>
 
@@ -537,7 +531,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
               <div>
                 <ChartDatas
                   numeros={numeros}
-                  tipo_grafico={tipoGrafico}
+                  tipo_grafico={4}
                 />
               </div>
 
@@ -611,7 +605,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
 
         </Col>  
 
-        <Col>
+        {/* <Col>
 
         <Accordion defaultActiveKey={['1']} alwaysOpen>
           <Accordion.Item eventKey={acordeao1}>
@@ -647,7 +641,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
 
 
 
-        </Col>  
+        </Col>   */}
 
         {/* <Col>
           <Table striped bordered hover variant="info">
@@ -677,8 +671,6 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
       </Row>  
 
       </form>
-
-
 
       <Modal show={show1} onHide={handleClose1} className='modal-xl'>
                 <Modal.Header closeButton>
@@ -719,7 +711,7 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
         </Modal.Header>
         <Modal.Body>
           <Form>
-             <Image src='/imagens/help_proposta.png' rounded />
+             <Image src='/imagens/overview.png' rounded />
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -757,4 +749,4 @@ const Proposta = ({ aoCadastrar, times, cadastrarTime, participantes, tipos }) =
   )
 }
 
-export default Proposta
+export default Atualizacao

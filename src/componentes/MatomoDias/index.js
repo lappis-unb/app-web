@@ -168,16 +168,28 @@ const ConsumoApiExterna = async (nomeApi, dataRequisicao) => {
                     <Table striped bordered hover variant="info">
                         <thead style={{ backgroundcolor: "#FFF" }}>
                             <tr>
-                                    <th>bounce_count</th>
+                                    {/* <th>bounce_count</th>
                                     <th>label</th>
-                                    {/* <th>logo</th> */}
                                     <th>max_actions</th>
                                     <th>nb_actions</th>
                                     <th>nb_uniq_visitors</th>
                                     <th>nb_users</th>
                                     <th>nb_visits</th>
                                     <th>nb_visits_converted</th>
-                                    <th>sum_visit_length</th>                                
+                                    <th>sum_visit_length</th>       */}
+
+                                    {/* <th>Data</th> */}
+                                    <th>Rejeições</th>
+                                    <th>Título</th>
+                                    {/* <th>logo</th> */}
+                                    <th>Máximo Ações</th>
+                                    <th>Ações</th>
+                                    <th>Visitantes Únicos</th>
+                                    <th>Usuários</th>
+                                    <th>Visitantes</th>
+                                    <th>Conversões</th>
+                                    <th>Tempo Gasto</th>                                    
+
                             </tr>
                         </thead>
                         <tbody>

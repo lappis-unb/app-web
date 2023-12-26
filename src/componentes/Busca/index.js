@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { Card, Table, Button, InputGroup, Form, Modal} from 'react-bootstrap'
+import { Card, Table, Button, InputGroup, Form, Modal, Image} from 'react-bootstrap'
 import wordsFill from './words';
 
 import { URL_API_LOCAL } from '../../api';
@@ -28,6 +28,10 @@ const Busca = ({aoCadastrar}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);    
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);        
     
     useEffect(() => {
     //   axios.get(`${URL_API_LOCAL}/temas`)
@@ -137,7 +141,14 @@ const Busca = ({aoCadastrar}) => {
     return (
         <section className="formulario-container">
             <form className="formulario">
-                <h2>Busca Propostas</h2>
+                <h2>Busca Propostas  _ 
+                <Button variant="outline-success" 
+                    onClick={() => {
+                        setShow1(true)
+                    }}                    
+                >?</Button>   
+                </h2>
+
                 {/* <InputGroup className="mb-3"  > */}
                 <InputGroup.Text style={{ backgroundColor: '#d5d8d7'}} ><b>Palavra(s)-chave</b> </InputGroup.Text>
                 <Form.Control
@@ -164,6 +175,8 @@ const Busca = ({aoCadastrar}) => {
                 <Button variant="primary" 
                     onClick={() => buscaDados(id,evento)}
                 >Consultar</Button>      
+
+ 
 
                 {/* </InputGroup> */}
 
@@ -228,6 +241,33 @@ const Busca = ({aoCadastrar}) => {
                 </Button>
                 </Modal.Footer>
             </Modal>
+
+
+
+      <Modal show={show1} onHide={handleClose1} className='modal-xl'>
+        <Modal.Header closeButton>
+          <Modal.Title>
+             <p style={{ color: "#03a9f4" }} >Ajuda</p> 
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+             <Image src='/imagens/help_motor.png' rounded />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose1}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal> 
+
+
+
+
+
+
+
 
 
 

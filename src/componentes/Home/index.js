@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { ChartJsApi } from "../Graficos/ChartJsApi";
 import Busca from '../../componentes/Busca';
+import Video from '../../componentes/Video';
 
-import {Button, Stack, Card, Modal, Form, Container, Row, Col} from "react-bootstrap";
+import {Button, Stack, Card, Modal, Form, Container, Row, Col, Image} from "react-bootstrap";
 import Bodyimg from "../Banner/bodyimg";
 
 import { URL_API_LOCAL } from '../../api';
@@ -217,7 +218,7 @@ function Home() {
             <Row> */}
             <Col>
               <Card style={{ width: '36rem' }}>
-              <a href="./Matomo">                
+              <a href="./MatomoSoma">                
                 <Card.Img variant="top" src='/imagens/analytics.png' />
                 </a>
                 <Card.Body>
@@ -253,15 +254,33 @@ function Home() {
                   {/* <a href="./Busca">
                     <Button variant="primary" >Relatórios</Button>    
                   </a>  */}
-                  {/* <Button variant="success">Mensagens</Button> */}
 
                 </Card.Body>
               </Card>
               </Col>
+
+              <Col>
+              <Card style={{ width: '36rem' }}>
+              <a href="./Atualizacao">                
+                <Card.Img variant="top" src='/imagens/update.png' />
+                </a>
+                <Card.Body>
+                  <Card.Title >Atualização dos Dados</Card.Title>
+                  {/* <Card.Text>
+                    Consulte os || {totalNumeros.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } registros de análises das 20 propostas mais votadas por ministério.
+                  </Card.Text> */}
+
+                  {/* <a href="./Busca">
+                    <Button variant="primary" >Relatórios</Button>    
+                  </a>  */}
+
+                </Card.Body>
+              </Card>
+              </Col>
+
             </Row>          
 
-
-
+            {/* <a href="./Video">Vídeo</a> */}
 
 
           {/* </Col> */}
@@ -282,43 +301,7 @@ function Home() {
 
 
 
-    <Modal show={show} onHide={handleClose} className='modal-xl'>
-        <Modal.Header closeButton>
-          <Modal.Title>
-             <p style={{ color: "#03a9f4" }} >Visitas diárias - em: 04/10/2023</p> 
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            {/* <div style={{height: '20%'}}>
-              <ChartJsApi 
-                numeros = {1}
-                tipo_grafico = {4}
-              />
-            </div>
-            <div>
-              <ChartJsApi 
-                numeros = {2}
-                tipo_grafico = {4}
-              />
-            </div>             */}
-            <div style={{backgroundColor: "#F8F8FF" }}>
-              <ChartJsApi 
-                numeros = {3}
-                tipo_grafico = {4}
-              />
-            </div>            
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          {/* <Button variant="secondary" onClick={() => <Graficos />}> */}
-            {/* Mais
-          </Button>  */}
-          <Button variant="primary" onClick={handleClose}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>      
+     
 
 
     </div>

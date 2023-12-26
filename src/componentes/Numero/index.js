@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Card, Table, Button, InputGroup, Form, Modal, Dropdown } from 'react-bootstrap'
+import { Card, Table, Button, InputGroup, Form, Modal, Dropdown, Image } from 'react-bootstrap'
 //import Chart from 'chart.js/auto'
 
 import ListaSuspensa from '../ListaSuspensa'
@@ -49,6 +49,10 @@ const handleShow1 = () => setShow1(true);
 const [show2, setShow2] = useState(false);
 const handleClose2 = () => setShow2(false);           // Faixas de Renda 
 const handleShow2 = () => setShow2(true);   
+
+const [show3, setShow3] = useState(false);
+const handleClose3 = () => setShow3(false);           // Faixas de Renda 
+const handleShow3 = () => setShow3(true);   
 
 const [tipoGrafico, SetTipoGrafico] = useState(0);
 const nomeGrafico= ["Doughnut", "Pie", "Bar", "Horizontal Bar", "Line"]
@@ -163,7 +167,14 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
   return (
     <section className="formulario-container">
       <form className="formulario" > 
-        <h2>{numerosTotal.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } - Registros de Análises </h2>
+        <h2>{numerosTotal.toLocaleString('pt-BR', {style: 'decimal', currency: 'BRL', currencyDisplay: 'name'}) } - Registros de Análises 
+        _ 
+                <Button variant="outline-success" 
+                    onClick={() => {
+                        setShow3(true)
+                    }}                    
+                >?</Button>        
+        </h2>
 
         {/* <InputGroup className="mb-3"  > */}
         <InputGroup.Text style={{ backgroundColor: '#d5d8d7' }} ><b>Categoria</b> </InputGroup.Text>
@@ -421,6 +432,26 @@ console.log('tipo, regiao, ranking, proposta, categoria', tipo, regiao, ranking,
           </Button>
         </Modal.Footer>
       </Modal>
+
+
+      <Modal show={show3} onHide={handleClose3} className='modal-xl'>
+        <Modal.Header closeButton>
+          <Modal.Title>
+             <p style={{ color: "#03a9f4" }} >Ajuda</p> 
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+             <Image src='/imagens/help_ppa.png' rounded />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose3}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal> 
+
 
 
       </form>
