@@ -6,5 +6,7 @@
 
 export const URL_API_LOCAL = 'http://localhost:4040' //sim
 
+//export const URL_API_LOCAL = 'http://164.41.98.12:6380' //sim
+
 //export const URL_API_LOCAL = 'backend:4040'          não
 //export const URL_API_LOCAL = 'backend'

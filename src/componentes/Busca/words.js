@@ -138,18 +138,18 @@ function wordsFill(text) {
             text1 = text1.replaceAll(textoIgual[i].igual,textoIgual[i].result);
         }
    
-        console.log('words text1=',text1, ' text=', text);
+        //console.log('words text1=',text1, ' text=', text);
 
         const diacritics = /[u0300-u036f]/g;
         //capitalização e normalização
         text = text.toUpperCase().normalize("NFD").replace(diacritics, "");
     
-        console.log('words text1=',text1, ' text=', text);
+        //console.log('words text1=',text1, ' text=', text);
 
         //separando e removendo repetidos
         const arr = text1.split(' ').filter((item, pos, self) => self.indexOf(item) === pos);    
 
-        console.log('words text1=',text1, ' text=', text, ' arr=', arr);
+        //console.log('words text1=',text1, ' text=', text, ' arr=', arr);
 
         //removendo nulls, undefineds e strings vazias
         return arr.filter(item => (item));

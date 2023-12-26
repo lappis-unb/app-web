@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Cabecalho.module.css'
 import CabecalhoLink from '../CabecalhoLink';
 import logo from './logo192.png';
-import { Button, Input, Form, Nav, Badge, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Button, Input, Form, Nav, Badge, Navbar, Container, NavDropdown, Modal, Image } from 'react-bootstrap';
 
 function Cabecalho() {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);    
 
     return (
         <header>
@@ -36,9 +41,13 @@ function Cabecalho() {
                                 {/* <NavDropdown.Item href="./Numeros">Análise</NavDropdown.Item> */}
                                 <NavDropdown.Item href="./Graficos">Visitantes Mensal</NavDropdown.Item>
                                 <NavDropdown.Item href="./GraficoDia">Visitantes - Dia</NavDropdown.Item>
+                                <NavDropdown.Item href="./Matomo">Matomo</NavDropdown.Item>
+                                <NavDropdown.Item href="./MatomoSoma">Matomo - Soma</NavDropdown.Item>                                
+                                <NavDropdown.Item href="./MatomoDias">Matomo - Dias</NavDropdown.Item>
                             </NavDropdown>                        
 
                             <NavDropdown title="Itens" id="collasible-nav-dropdown">
+                                <Nav.Link href="./Atualizacao">Atualização</Nav.Link>
                                 <Nav.Link href="./Participantes">Participantes</Nav.Link>
                                 <Nav.Link href="./Temas">Categorias</Nav.Link>
                                 <Nav.Link href="./Reunioes">Reuniões</Nav.Link>
@@ -46,7 +55,7 @@ function Cabecalho() {
                                 <Nav.Link href="./PropostaComentarios"> - Comentários</Nav.Link>
                                 <Nav.Link href="./PropostaModeracao"> - Moderação</Nav.Link>
                                 <Nav.Link href="./Busca"> - Busca</Nav.Link>     
-                                <Nav.Link href="./Moderacao"> - Moderacao</Nav.Link>     
+                                <Nav.Link href="./Login"> - Login</Nav.Link>      
                             </NavDropdown>
 
                             <NavDropdown title="Outros" id="collasible-nav-dropdown">
@@ -58,10 +67,43 @@ function Cabecalho() {
 
                         </Nav>
 
+
+                        <Button variant="outline-success" 
+                            onClick={() => {
+                                setShow(true)
+                            }}                    
+                        >Ajuda</Button>                         
+
                 </Navbar>
+
+
+                <Modal show={show} onHide={handleClose} className='modal-xl'>
+                    <Modal.Header closeButton>
+                    <Modal.Title>
+                        <p style={{ color: "#03a9f4" }} >Ajuda</p> 
+                    </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <Form>
+                        <Image src='/imagens/help_app.png' rounded />
+                    </Form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="primary" onClick={handleClose}>
+                        OK
+                    </Button>
+                    </Modal.Footer>
+                </Modal> 
+
+
 
             {/* </Container> */}
         </header>
+
+
+
+
+
     )
 }
 
